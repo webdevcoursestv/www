@@ -56,7 +56,7 @@ export default function Home() {
         <section className={"commands py-24"}>
           <div className={"text-center"}>
             <h2 className={"text-4xl font-semibold mb-4"}>Commands</h2>
-            <p className={"text-lg font-light"}>These are the commands of Mark"s Gang channel and discord</p>
+            <p className={"text-lg font-light"}>These are the commands of Mark's Gang channel and discord</p>
           </div>
           <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"}>
             {commands.nightbot.map((command, index) => (
