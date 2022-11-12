@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className={"container mx-auto px-4"}>
       <Head>
-        <title>Mark"s Gang - The Programmers Tribe</title>
+        <title>Mark's Gang - The Programmers Tribe</title>
         <meta name="description" content="A place where we all hang out, code, and smoke weed. Chill vibes only." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -15,7 +15,7 @@ export default function Home() {
       <header className={"py-6 grid grid-cols-1 md:grid-cols-2 items-center"}>
         <div className={"flex gap-4 items-center"}>
           <div className={"logo text-3xl"}>
-            <span className={"font-bold text-white"}>Mark"s</span><span className={"text-red-600 font-bold"}>Gang</span>
+            <span className={"font-bold text-white"}>Mark's</span><span className={"text-red-600 font-bold"}>Gang</span>
           </div>
           <p className={"text-white font-light italic"}>a new web developer tribe!</p>
         </div>
@@ -27,7 +27,7 @@ export default function Home() {
         <section className={"hero flex-col justify-center py-24"}>
           <div className={"text-center"}>
             <h1 className={"text-3xl md:text-5xl font-semibold mb-4"}>Welcome to the Tribe!!!</h1>
-            <p className={"text-md md:text-xl font-light"}>Here at Mark"s Gang everyone is welcome to come chill, problem-solve, and smoke weed with us.<br></br> As long as you are a coder of some kind!</p>
+            <p className={"text-md md:text-xl font-light"}>Here at Mark's Gang everyone is welcome to come chill, problem-solve, and smoke weed with us.<br></br> As long as you are a coder of some kind!</p>
           </div>
           <div className="mt-12">
             <iframe className={"w-full h-[375px] md:w-[70%] md:h-[600px] mx-auto"} src="https://www.youtube.com/embed/YxGug-swl8s" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -36,7 +36,7 @@ export default function Home() {
         <section className={"gang py-24"}>
           <div className={"text-center"}>
             <h2 className={"text-4xl font-semibold mb-4"}>Meet The Gang</h2>
-            <p className={"text-lg font-light"}>These are the official members of Mark"s Gang, they are some execellent coders who you should speak to.</p>
+            <p className={"text-lg font-light"}>These are the official members of Mark's Gang, they are some execellent coders who you should speak to.</p>
           </div>
           <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"}>
             {gang.members.map((member, index) => (
