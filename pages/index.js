@@ -1,9 +1,10 @@
 import Head from "next/head"
 import Image from "next/image"
-import gang from "../data/gang"
-import commands from "../data/commands"
 
-export default function Home() {
+
+export default function Home({ gangs, orders }) {
+  const members = gangs.data;
+  const commands = orders.data;
   return (
     <div className={"container mx-auto px-4"}>
       <Head>
@@ -39,7 +40,7 @@ export default function Home() {
             <p className={"text-lg font-light"}>These are the official members of Mark's Gang, they are some execellent coders who you should speak to.</p>
           </div>
           <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"}>
-            {gang.members.map((member, index) => (
+            {members.map((member, index) => (
               <div key={index} className={"bg-[#282828] rounded-lg shadow-lg p-4"}>
                 <div className={"flex flex-col items-center"}>
                   <div className={"w-24 h-24 rounded-full overflow-hidden"}>
@@ -59,7 +60,7 @@ export default function Home() {
             <p className={"text-lg font-light"}>These are the commands of Mark's Gang channel and discord</p>
           </div>
           <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"}>
-            {commands.nightbot.map((command, index) => (
+            {commands.map((command, index) => (
               <div key={index} className={"bg-[#282828] rounded-lg shadow-lg p-4"}>
                 <div className={"flex flex-col items-center"}>
                   <h3 className={"text-xl font-semibold mt-4"}>{command.command}</h3>
@@ -73,4 +74,28 @@ export default function Home() {
 
     </div>
   )
+}
+
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjoiNjM2ZjRkNjM0NjAzMzQwMDI3YWE2MDA4IiwidXNlcklkIjoiNjM2ZjRhMGE3NjdmMzcwMDI2NGRmZmU2IiwiaWF0IjoxNjY4MjM4NjkxfQ.rM7BLOJ-jRxsEbH3vPlfEovXjsPJKCYxWpvPaZFO03I'
+  }
+  // You can use any data fetching library
+  const res = await fetch('https://marks-gang-fecjbg.can.canonic.dev/api/gangs', headers)
+  const gangs = await res.json()
+
+  const res2 = await fetch('https://marks-gang-fecjbg.can.canonic.dev/api/commands', headers)
+  const orders = await res2.json()
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      gangs, orders
+    },
+
+  }
 }
