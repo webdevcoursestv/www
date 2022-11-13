@@ -1,10 +1,21 @@
 import Head from "next/head"
 import Image from "next/image"
 
+import { wlist } from "../data/wishlist";
+import { eq } from "../data/equiptment";
+import { members } from "../data/gang";
+import { orders } from "../data/commands";
 
-export default function Home({ gangs, orders }) {
-  const members = gangs.data;
-  const commands = orders.data;
+
+export default function Home() {
+  const wishlist = wlist;
+  const equiptment = eq;
+  const gang = members;
+  const commands = orders;
+
+  const today = new Date();
+  const year = today.getFullYear();
+
   return (
     <div className={"container mx-auto px-4"}>
       <Head>
@@ -40,7 +51,7 @@ export default function Home({ gangs, orders }) {
             <p className={"text-lg font-light"}>These are the official members of Mark's Gang, they are some execellent coders who you should speak to.</p>
           </div>
           <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"}>
-            {members.map((member, index) => (
+            {gang.map((member, index) => (
               <div key={index} className={"bg-[#282828] rounded-lg shadow-lg p-4"}>
                 <div className={"flex flex-col items-center"}>
                   <div className={"w-24 h-24 rounded-full overflow-hidden"}>
@@ -70,32 +81,46 @@ export default function Home({ gangs, orders }) {
             ))}
           </div>
         </section>
+        <section className={"grid grid-cols-1 lg:grid-cols-2 gap-24 py-24"}>
+          <aside>
+            <h3 className={"text-2xl font-semibold mb-4"}>Mark's Wishlist</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {wishlist.map((wish, index) => (
+                <a href={wish.amazon_url}>
+                  <div key={index} className={"bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-4 mb-4 text-center"}>
+                    <img className={"mx-auto rounded-full"} src={wish.img} width={100} height={100} />
+                    <h3 className={"text-xl font-semibold mt-4"}>{wish.item}</h3>
+                    <p className={"p-[5px] text-white text-sm my-2 font-semibold italic"}>{wish.price}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </aside>
+          <aside>
+            <h3 className={"text-2xl font-semibold mb-4"}>Stream Equiptment</h3>
+            <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+              {equiptment.map((eq, index) => (
+                <a href={eq.url}>
+                  <div key={index} className={"min-h-[220px] bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-6 mb-4 text-center"}>
+                    <img className={"mx-auto rounded-full"} src={eq.img} width={100} height={100} />
+                    <h3 className={"text-xl font-semibold mt-4"}>{eq.item}</h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </aside>
+        </section>
       </main>
+      <footer className={"flex justify-between items-center bg-[#212121] text-white p-6 rounded"}>
+        <div>
+          <p>&copy; {year} <span className={"text-red-600"}>Mark Tellez</span>. All rights reserved. </p>
+        </div>
 
+        <div>
+          <p>Developed by <span className={"text-red-600"}><a href="https://github.com/clogginsdev">Chris Loggins</a></span>.</p>
+        </div>
+
+      </footer>
     </div>
   )
-}
-
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjoiNjM2ZjRkNjM0NjAzMzQwMDI3YWE2MDA4IiwidXNlcklkIjoiNjM2ZjRhMGE3NjdmMzcwMDI2NGRmZmU2IiwiaWF0IjoxNjY4MjM4NjkxfQ.rM7BLOJ-jRxsEbH3vPlfEovXjsPJKCYxWpvPaZFO03I'
-  }
-  // You can use any data fetching library
-  const res = await fetch('https://marks-gang-fecjbg.can.canonic.dev/api/gangs', headers)
-  const gangs = await res.json()
-
-  const res2 = await fetch('https://marks-gang-fecjbg.can.canonic.dev/api/commands', headers)
-  const orders = await res2.json()
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      gangs, orders
-    },
-
-  }
 }
