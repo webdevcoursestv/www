@@ -111,7 +111,7 @@ export default function Home() {
           </aside>
         </section>
       </main>
-      <footer className={"flex justify-between items-center bg-[#212121] text-white p-6 rounded"}>
+      <footer className={"flex flex-col  justify-between items-center md:flex-row bg-[#212121] text-white p-6 rounded"}>
         <div>
           <p>&copy; {year} <span className={"text-red-600"}>Mark Tellez</span>. All rights reserved. </p>
         </div>
