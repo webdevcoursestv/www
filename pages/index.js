@@ -86,8 +86,8 @@ export default function Home() {
             <h3 className={"text-2xl font-semibold mb-4"}>Mark's Wishlist</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {wishlist.map((wish, index) => (
-                <a href={wish.amazon_url}>
-                  <div key={index} className={"bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-4 mb-4 text-center"}>
+                <a key={index} href={wish.amazon_url}>
+                  <div className={"bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-4 mb-4 text-center"}>
                     <img className={"mx-auto rounded-full"} src={wish.img} width={100} height={100} />
                     <h3 className={"text-xl font-semibold mt-4"}>{wish.item}</h3>
                     <p className={"p-[5px] text-white text-sm my-2 font-semibold italic"}>{wish.price}</p>
@@ -100,8 +100,8 @@ export default function Home() {
             <h3 className={"text-2xl font-semibold mb-4"}>Stream Equiptment</h3>
             <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
               {equiptment.map((eq, index) => (
-                <a href={eq.url}>
-                  <div key={index} className={"min-h-[220px] bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-6 mb-4 text-center"}>
+                <a key={index} href={eq.url}>
+                  <div className={"min-h-[220px] bg-[#282828] hover:bg-[#313131] rounded-lg shadow-lg p-6 mb-4 text-center"}>
                     <img className={"mx-auto rounded-full"} src={eq.img} width={100} height={100} />
                     <h3 className={"text-xl font-semibold mt-4"}>{eq.item}</h3>
                   </div>
