@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevmentorLive NextJS Starter Template
 
 ## Getting Started
 
-First, run the development server:
+To create an app using this starter
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx create-next-app your-app-name -e https://github.com/devmentorlive-youtube/next-tailwind-starter
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## This template uses [TailwindCSS](https://tailwindcss.com/)!
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## To run your server (development)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+cd your-app-name
+npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Folder structure
 
-## Learn More
+```bash
+src
+├── features
+├── pages
+│   └── index.jsx
+├── ui
+└── index.jsx
+```
 
-To learn more about Next.js, take a look at the following resources:
+This app uses a modified/simplified version of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), better suited for modern web development.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### /ui
 
-## Deploy on Vercel
+This folder is for your "lego blocks", single purpose React components that can be combined together to make more complicated components, known as Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### /features
+
+This folder is for more complex components, or features. Features are created by composing many UI components and usually, state
+
+
+### /pages
+
+This folder is for navigable components. A router automagically creates urls for anything in this folder. To create a page, combine features and ui components and put them in a component in this page. Typically state is managed in the feature, and any props that come from the server are passed through pages via the return object from getServerSideProps. Those props are then passed down into features as props, or put into a context.
